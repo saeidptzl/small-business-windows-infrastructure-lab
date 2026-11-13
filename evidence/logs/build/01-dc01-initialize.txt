@@ -1,0 +1,42 @@
+[2026-11-13 01:21:20] Configuring the lab network adapter
+[2026-11-13 01:21:50] Bringing the data and backup disks online
+[2026-11-13 01:22:23] Allowing ICMPv4 echo from the lab subnet only
+[2026-11-13 01:22:28] Installing roles and features
+
+Success RestartNeeded ExitCode
+------- ------------- --------
+   True            No  Success
+
+
+
+[2026-11-13 01:26:56] Result
+
+
+InterfaceAlias : LAB
+IPv4           : 10.10.50.10
+Gateway        :
+DNS            : 10.10.50.10, 127.0.0.1
+
+
+
+
+
+DriveLetter FileSystemLabel FileSystem SizeGB
+----------- --------------- ---------- ------
+          C OS              NTFS           59
+          D Data            NTFS           20
+          E Backup          NTFS           20
+
+
+
+
+Name                  InstallState
+----                  ------------
+AD-Domain-Services       Installed
+DNS                      Installed
+FS-FileServer            Installed
+GPMC                     Installed
+Windows-Server-Backup    Installed
+
+
+

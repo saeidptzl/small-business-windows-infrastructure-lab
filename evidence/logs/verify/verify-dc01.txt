@@ -1,0 +1,37 @@
+
+Name          Status
+----          ------
+ADWS         Running
+DNS          Running
+LanmanServer Running
+Netlogon     Running
+NTDS         Running
+
+
+GPO user DS/Sysvol 1/1, computer DS/Sysvol 1/1
+
+Name       AccountName                      AccessRight
+----       -----------                      -----------
+Finance    BUILTIN\Administrators                  Full
+Finance    SMALLBIZ\DL_FS_Finance_Modify         Change
+Operations BUILTIN\Administrators                  Full
+Operations SMALLBIZ\DL_FS_Operations_Modify      Change
+
+
+
+SamAccountName
+--------------
+giulia.bianchi
+luca.ferri
+elena.marini
+
+
+
+SamAccountName
+--------------
+marco.verdi
+sara.conti
+paolo.russo
+
+
+dcdiag exit code: 0

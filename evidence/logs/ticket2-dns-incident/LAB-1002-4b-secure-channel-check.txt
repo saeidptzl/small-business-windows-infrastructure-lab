@@ -1,0 +1,5 @@
+Test-ComputerSecureChannel now: False
+Flags: 0 Authentication Service: Netlogon
+Trusted DC Name
+Trusted DC Connection Status Status = 1311 0x51f ERROR_NO_LOGON_SERVERS
+The command completed successfully

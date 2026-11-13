@@ -1,0 +1,31 @@
+[2026-11-13 01:33:20] Configuring the lab network adapter
+[2026-11-13 01:33:25] Name-resolution hardening: LLMNR off, NetBIOS over TCP/IP off on LAB
+[2026-11-13 01:33:26] Sign-in screen: do not display the last signed-in user
+[2026-11-13 01:33:26] Evidence folder C:\LabEvidence
+[2026-11-13 01:33:26] Connectivity checks to DC01
+  TCP 53   to 10.10.50.10: open
+  TCP 389  to 10.10.50.10: open
+  TCP 445  to 10.10.50.10: open
+
+Name                    Type IPAddress
+----                    ---- ---------
+DC01.corp.smallbiz.test    A 10.10.50.10
+
+
+
+
+Name                                    NameTarget              Port
+----                                    ----------              ----
+_ldap._tcp.dc._msdcs.corp.smallbiz.test dc01.corp.smallbiz.test  389
+
+
+
+
+
+InterfaceAlias : LAB
+IPv4           : 10.10.50.21
+DNS            : 10.10.50.10
+
+
+
+

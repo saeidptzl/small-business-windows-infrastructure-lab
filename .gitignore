@@ -1,0 +1,33 @@
+# Runtime data never belongs in this repository:
+# ISOs, disk images, firmware variable stores, TPM state, sockets, secrets.
+lab-runtime/
+*.iso
+*.qcow2
+*.img
+*.vhd
+*.vhdx
+*.vmdk
+*.vdi
+*.fd
+*.wim
+*.esd
+*.sock
+*.pid
+
+# Generated answer files contain passwords; only the *.tmpl templates are tracked.
+host/unattend/*.xml
+!host/unattend/*.xml.tmpl
+lab-secrets.env
+secrets/
+*.env.local
+
+# Raw (unsanitised) evidence stays on the lab host; sanitised copies go to evidence/.
+evidence/raw/
+
+# Editor / OS noise
+.vscode/
+.idea/
+*.swp
+.DS_Store
+Thumbs.db
+__pycache__/

@@ -1,0 +1,65 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1040" height="400" viewBox="0 0 1040 400" font-family="Segoe UI, Helvetica, Arial, sans-serif" role="img" aria-labelledby="t d">
+  <title id="t">Access model: AGDLP groups, share and NTFS permissions, drive-map GPO</title>
+  <desc id="d">A Finance user is a member of the global group GG_Finance, which is a member of the domain local group DL_FS_Finance_Modify, which is granted Change on the Finance share and Modify in NTFS. A GPO maps drive F: for GG_Finance members as a convenience only. The same user is denied on the Operations share because they are not in DL_FS_Operations_Modify.</desc>
+  <defs>
+    <marker id="a" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="8" markerHeight="8" orient="auto-start-reverse">
+      <path d="M0 0 L10 5 L0 10 z" fill="#57606a"/>
+    </marker>
+    <marker id="g" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="8" markerHeight="8" orient="auto-start-reverse">
+      <path d="M0 0 L10 5 L0 10 z" fill="#8250df"/>
+    </marker>
+  </defs>
+  <rect width="1040" height="400" fill="#ffffff"/>
+  <text x="520" y="30" text-anchor="middle" font-size="19" font-weight="700" fill="#1f2328">Access model · AGDLP + share/NTFS permissions + one drive-map GPO</text>
+
+  <!-- Row 1: the chain that grants access -->
+  <g font-size="12.5" fill="#1f2328">
+    <rect x="20" y="62" width="160" height="62" rx="8" fill="#f6f8fa" stroke="#57606a"/>
+    <text x="100" y="88" text-anchor="middle" font-weight="700">elena.marini</text>
+    <text x="100" y="107" text-anchor="middle" fill="#57606a">Account (new hire)</text>
+
+    <rect x="226" y="62" width="170" height="62" rx="8" fill="#ddf4ff" stroke="#0969da"/>
+    <text x="311" y="88" text-anchor="middle" font-weight="700">GG_Finance</text>
+    <text x="311" y="107" text-anchor="middle" fill="#57606a">Global: who you are</text>
+
+    <rect x="442" y="62" width="200" height="62" rx="8" fill="#ddf4ff" stroke="#0969da"/>
+    <text x="542" y="88" text-anchor="middle" font-weight="700">DL_FS_Finance_Modify</text>
+    <text x="542" y="107" text-anchor="middle" fill="#57606a">Domain Local: what you use</text>
+
+    <rect x="688" y="62" width="150" height="62" rx="8" fill="#dafbe1" stroke="#1a7f37"/>
+    <text x="763" y="88" text-anchor="middle" font-weight="700">Share: Change</text>
+    <text x="763" y="107" text-anchor="middle" font-weight="700">NTFS: Modify</text>
+
+    <rect x="884" y="62" width="140" height="62" rx="8" fill="#ffffff" stroke="#1f4e79" stroke-width="2"/>
+    <text x="954" y="88" text-anchor="middle" font-weight="700">\\DC01\Finance</text>
+    <text x="954" y="107" text-anchor="middle" fill="#57606a">D:\Shares\Finance</text>
+  </g>
+  <g stroke="#57606a" stroke-width="1.8" marker-end="url(#a)">
+    <line x1="180" y1="93" x2="222" y2="93"/>
+    <line x1="396" y1="93" x2="438" y2="93"/>
+    <line x1="642" y1="93" x2="684" y2="93"/>
+    <line x1="838" y1="93" x2="880" y2="93"/>
+  </g>
+  <g font-size="11" fill="#57606a" text-anchor="middle">
+    <text x="201" y="145">member of</text>
+    <text x="417" y="145">member of</text>
+    <text x="663" y="145">granted</text>
+    <text x="859" y="145">on</text>
+  </g>
+  <text x="20" y="290" font-size="12" fill="#1a7f37">Effective access = the more restrictive of the share and NTFS permissions. Both grant only the department's DL group.</text>
+
+  <!-- Row 2: the GPO (convenience) -->
+  <rect x="226" y="196" width="416" height="70" rx="8" fill="#fbefff" stroke="#8250df"/>
+  <text x="434" y="222" text-anchor="middle" font-size="12.5" font-weight="700" fill="#512a97">GPO SB-U-DepartmentDriveMaps (linked to OU=SmallBiz)</text>
+  <text x="434" y="244" text-anchor="middle" font-size="12" fill="#1f2328">Drive Maps: F: if member of GG_Finance · O: if member of GG_Operations</text>
+  <path d="M642 231 C 800 231, 954 200, 954 128" fill="none" stroke="#8250df" stroke-width="1.8" stroke-dasharray="6 4" marker-end="url(#g)"/>
+  <text x="790" y="250" font-size="11.5" fill="#512a97">maps F: at sign-in (convenience only)</text>
+  <line x1="311" y1="124" x2="311" y2="192" stroke="#8250df" stroke-width="1.5" stroke-dasharray="3 3" marker-end="url(#g)"/>
+  <text x="318" y="182" font-size="11" fill="#512a97">targeting checks this group</text>
+
+  <!-- Row 3: denied path -->
+  <rect x="20" y="300" width="1004" height="76" rx="8" fill="#fff1f0" stroke="#cf222e"/>
+  <text x="36" y="326" font-size="13" font-weight="700" fill="#a40e26">elena.marini → \\DC01\Operations : ACCESS DENIED</text>
+  <text x="36" y="348" font-size="12.5" fill="#1f2328">Not a member of GG_Operations, so not in DL_FS_Operations_Modify: neither the share ACL nor the NTFS ACL lists any of the user's groups,</text>
+  <text x="36" y="366" font-size="12.5" fill="#1f2328">and the GPO does not map O: for this user. Tested on the UNC path directly, not through a drive letter.</text>
+</svg>

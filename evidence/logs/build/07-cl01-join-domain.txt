@@ -1,0 +1,11 @@
+[2026-11-13 01:34:58] Joining CL01 to corp.smallbiz.test in OU=Workstations,OU=SmallBiz,DC=corp,DC=smallbiz,DC=test
+WARNING: The changes will take effect after you restart the computer CL01.
+
+
+ComputerName : CL01
+HasSucceeded : True
+
+
+
+
+[2026-11-13 01:34:59] Restarting in 15 seconds

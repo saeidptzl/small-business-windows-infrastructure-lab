@@ -1,0 +1,62 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1040" height="600" viewBox="0 0 1040 600" font-family="Segoe UI, Helvetica, Arial, sans-serif" role="img" aria-labelledby="t d">
+  <title id="t">Small Business Windows Infrastructure Lab - network diagram</title>
+  <desc id="d">A Linux host runs two QEMU/KVM virtual machines, DC01 (Windows Server 2025: AD DS, DNS, file shares, backup) and CL01 (Windows 11 Enterprise LTSC 2024, domain member), connected only by an isolated layer-2 lab LAN 10.10.50.0/24 with no gateway or Internet. Management uses local Unix sockets (QMP and the QEMU guest agent), not the network.</desc>
+  <rect width="1040" height="600" fill="#ffffff"/>
+  <text x="520" y="32" text-anchor="middle" font-size="20" font-weight="700" fill="#1f2328">Small Business Windows Infrastructure Lab · network</text>
+
+  <!-- Host -->
+  <rect x="16" y="48" width="1008" height="532" rx="10" fill="#f6f8fa" stroke="#57606a" stroke-width="1.5"/>
+  <text x="32" y="74" font-size="13" font-weight="700" fill="#1f2328">Linux host · Ubuntu 26.04 LTS · QEMU/KVM 10.2.1 run as an unprivileged user (no root, no libvirt)</text>
+
+  <!-- DC01 -->
+  <rect x="40" y="92" width="460" height="200" rx="8" fill="#ffffff" stroke="#1f4e79" stroke-width="2"/>
+  <path d="M48 92 h444 a8 8 0 0 1 8 8 v22 h-460 v-22 a8 8 0 0 1 8 -8 z" fill="#1f4e79"/>
+  <text x="56" y="112" font-size="13" font-weight="700" fill="#ffffff">DC01 · Windows Server 2025 Standard Eval · Server Core</text>
+  <g font-size="12.5" fill="#1f2328">
+    <text x="56" y="146">10.10.50.10/24 · 2 vCPU · 1.5 GB RAM · UEFI Secure Boot</text>
+    <text x="56" y="167"><tspan font-weight="700">AD DS:</tspan> forest corp.smallbiz.test (NetBIOS SMALLBIZ)</text>
+    <text x="56" y="188"><tspan font-weight="700">DNS:</tspan> AD-integrated zone, the clients' only resolver</text>
+    <text x="56" y="209"><tspan font-weight="700">SMB:</tspan> \\DC01\Finance · \\DC01\Operations (share + NTFS)</text>
+    <text x="56" y="230"><tspan font-weight="700">Windows Server Backup:</tspan> file-level job to E:</text>
+    <text x="56" y="251"><tspan font-weight="700">Disks:</tspan> C: OS 60 GB · D: Data 20 GB · E: Backup 20 GB</text>
+    <text x="56" y="276" fill="#57606a">All roles on one VM: fine for a lab, a single point of failure in production</text>
+  </g>
+
+  <!-- CL01 -->
+  <rect x="540" y="92" width="460" height="200" rx="8" fill="#ffffff" stroke="#1f4e79" stroke-width="2"/>
+  <path d="M548 92 h444 a8 8 0 0 1 8 8 v22 h-460 v-22 a8 8 0 0 1 8 -8 z" fill="#1f4e79"/>
+  <text x="556" y="112" font-size="13" font-weight="700" fill="#ffffff">CL01 · Windows 11 Enterprise LTSC 2024 (Evaluation)</text>
+  <g font-size="12.5" fill="#1f2328">
+    <text x="556" y="146">10.10.50.21/24 · DNS 10.10.50.10 · 2 vCPU · 2 GB RAM</text>
+    <text x="556" y="167"><tspan font-weight="700">Firmware:</tspan> UEFI Secure Boot + TPM 2.0 (swtpm)</text>
+    <text x="556" y="188"><tspan font-weight="700">Domain member:</tspan> OU=Workstations,OU=SmallBiz</text>
+    <text x="556" y="209"><tspan font-weight="700">GPO:</tspan> SB-U-DepartmentDriveMaps maps F: or O:</text>
+    <text x="556" y="230"><tspan font-weight="700">Hardening:</tspan> LLMNR and NetBIOS off (DNS only)</text>
+    <text x="556" y="251"><tspan font-weight="700">Users:</tspan> synthetic Finance and Operations staff</text>
+    <text x="556" y="276" fill="#57606a">Used for the onboarding and DNS-incident tickets</text>
+  </g>
+
+  <!-- NIC links -->
+  <line x1="270" y1="292" x2="270" y2="330" stroke="#0969da" stroke-width="2.5"/>
+  <line x1="770" y1="292" x2="770" y2="330" stroke="#0969da" stroke-width="2.5"/>
+  <text x="280" y="316" font-size="11" fill="#0a3069">e1000e · 52:54:00:50:00:10</text>
+  <text x="780" y="316" font-size="11" fill="#0a3069">e1000e · 52:54:00:50:00:21</text>
+
+  <!-- Lab LAN -->
+  <rect x="40" y="330" width="960" height="50" rx="6" fill="#ddf4ff" stroke="#0969da" stroke-width="1.5"/>
+  <text x="520" y="351" text-anchor="middle" font-size="13.5" font-weight="700" fill="#0a3069">Isolated lab LAN · 10.10.50.0/24</text>
+  <text x="520" y="370" text-anchor="middle" font-size="12" fill="#0a3069">Layer-2 link that exists only between the two QEMU processes (dgram over Unix sockets) · no gateway · no DHCP · no Internet</text>
+
+  <!-- Management plane -->
+  <rect x="40" y="402" width="960" height="98" rx="6" fill="#fbefff" stroke="#8250df" stroke-width="1.5" stroke-dasharray="6 4"/>
+  <text x="56" y="425" font-size="13" font-weight="700" fill="#512a97">Management plane (local Unix sockets, not a network)</text>
+  <g font-size="12.5" fill="#1f2328">
+    <text x="56" y="447">host/vm.sh starts each VM as a systemd --user unit · host/labctl.py talks QMP: power, screenshots, keyboard input</text>
+    <text x="56" y="468">QEMU guest agent over virtio-serial: runs the PowerShell scripts as LocalSystem, copies files in and out</text>
+    <text x="56" y="489">Console: VNC bound to 127.0.0.1 only, or a GTK window</text>
+  </g>
+
+  <!-- No uplink -->
+  <rect x="40" y="516" width="960" height="48" rx="6" fill="#fff1f0" stroke="#cf222e" stroke-width="1.5"/>
+  <text x="520" y="545" text-anchor="middle" font-size="13" font-weight="700" fill="#a40e26">× Host Wi-Fi, home LAN and Internet: no TAP, bridge, NAT or route into the lab LAN</text>
+</svg>

@@ -1,0 +1,21 @@
+[2026-11-13 02:15:01] DNS diagnostics on CL01 as nt authority\system
+ipconfig /all (lab adapter):
+      Connection-specific DNS Suffix  . : corp.smallbiz.test
+      IPv4 Address. . . . . . . . . . . : 10.10.50.21(Preferred)
+      Subnet Mask . . . . . . . . . . . : 255.255.255.0
+      Default Gateway . . . . . . . . . :
+      DNS Servers . . . . . . . . . . . : 10.10.50.10
+      NetBIOS over Tcpip. . . . . . . . : Disabled
+
+
+Id   Check                                             Expected                        Observed                        Result
+--   -----                                             --------                        --------                        ------
+D-01 Adapter uses the AD DNS server                    10.10.50.10                     10.10.50.10                     PASS
+D-02 DC reachable by IP (ICMP)                         reachable                       reachable                       PASS
+D-03 Configured DNS 10.10.50.10 answers on TCP 53      open                            open                            PASS
+D-04 Resolve DC01.corp.smallbiz.test (system resolver) OK: 10.10.50.10                 OK: 10.10.50.10                 PASS
+D-05 Resolve DC SRV record (system resolver)           OK: DC01.corp.smallbiz.test:389 OK: dc01.corp.smallbiz.test:389 PASS
+D-06 Ask AD DNS 10.10.50.10 directly                   OK: 10.10.50.10                 OK: 10.10.50.10                 PASS
+D-07 DC locator (nltest /dsgetdc)                      \\DC01.corp.smallbiz.test       \\DC01.corp.smallbiz.test       PASS
+
+Conclusion: Name resolution is healthy.

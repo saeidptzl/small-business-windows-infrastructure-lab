@@ -1,0 +1,21 @@
+[2026-11-13 01:59:04] DNS diagnostics on CL01 as nt authority\system
+ipconfig /all (lab adapter):
+      Connection-specific DNS Suffix  . : corp.smallbiz.test
+      IPv4 Address. . . . . . . . . . . : 10.10.50.21(Preferred)
+      Subnet Mask . . . . . . . . . . . : 255.255.255.0
+      Default Gateway . . . . . . . . . :
+      DNS Servers . . . . . . . . . . . : 8.8.8.8
+      NetBIOS over Tcpip. . . . . . . . : Disabled
+
+
+Id   Check                                             Expected                        Observed                                                                                                     Result
+--   -----                                             --------                        --------                                                                                                     ------
+D-01 Adapter uses the AD DNS server                    10.10.50.10                     8.8.8.8                                                                                                      FAIL
+D-02 DC reachable by IP (ICMP)                         reachable                       reachable                                                                                                    PASS
+D-03 Configured DNS 8.8.8.8 answers on TCP 53          open                            unreachable                                                                                                  FAIL
+D-04 Resolve DC01.corp.smallbiz.test (system resolver) OK: 10.10.50.10                 FAILED: DC01.corp.smallbiz.test : This operation returned because the timeout period expired                 FAIL
+D-05 Resolve DC SRV record (system resolver)           OK: DC01.corp.smallbiz.test:389 FAILED: _ldap._tcp.dc._msdcs.corp.smallbiz.test : This operation returned because the timeout period expired FAIL
+D-06 Ask AD DNS 10.10.50.10 directly                   OK: 10.10.50.10                 OK: 10.10.50.10                                                                                              PASS
+D-07 DC locator (nltest /dsgetdc)                      \\DC01.corp.smallbiz.test       ERROR_NO_SUCH_DOMAIN                                                                                         FAIL
+
+Conclusion: ROOT CAUSE: the adapter 'LAB' uses DNS 8.8.8.8 instead of the AD DNS server 10.10.50.10. The DC is reachable and its DNS answers correctly, so the client configuration is at fault.

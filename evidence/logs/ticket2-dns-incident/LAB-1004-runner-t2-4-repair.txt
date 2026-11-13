@@ -1,0 +1,18 @@
+[2026-11-13 02:17:46] DNS servers before: 8.8.8.8
+[2026-11-13 02:17:49] DNS servers after : 10.10.50.10
+[2026-11-13 02:17:49] Secure channel not established yet (attempt 1): nltest /dsgetdc /force + /sc_reset
+   Flags: 30 HAS_IP  HAS_TIMESERV  Authentication Service: Netlogon
+   Trusted DC Name \\DC01.corp.smallbiz.test
+   Trusted DC Connection Status Status = 0 0x0 NERR_Success
+[2026-11-13 02:17:55] Result
+
+Id   Check                           Expected                  Observed                  Result
+--   -----                           --------                  --------                  ------
+R-01 Resolve DC01.corp.smallbiz.test 10.10.50.10               10.10.50.10               PASS
+R-02 Resolve DC SRV record           DC01.corp.smallbiz.test   dc01.corp.smallbiz.test   PASS
+R-03 DC locator                      \\DC01.corp.smallbiz.test \\DC01.corp.smallbiz.test PASS
+R-04 Secure channel                  True                      True                      PASS
+
+
+
+Next: the affected user signs out and back in (or runs gpupdate) and re-tests share access.

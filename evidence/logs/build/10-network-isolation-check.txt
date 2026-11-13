@@ -1,0 +1,18 @@
+Test-Connection : Generic failure
+At line:1 char:312
++ ... ntinue; $p = Test-Connection -ComputerName $t -Count 1 -Quiet; "{0,-1 ...
++                  ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+    + CategoryInfo          : InvalidOperation: (:) [Test-Connection], ManagementException
+    + FullyQualifiedErrorId : TestConnectionException,Microsoft.PowerShell.Commands.TestConnectionCommand
+
+Test-Connection : Generic failure
+At line:1 char:312
++ ... ntinue; $p = Test-Connection -ComputerName $t -Count 1 -Quiet; "{0,-1 ...
++                  ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+    + CategoryInfo          : InvalidOperation: (:) [Test-Connection], ManagementException
+    + FullyQualifiedErrorId : TestConnectionException,Microsoft.PowerShell.Commands.TestConnectionCommand
+
+Default routes on CL01: 0
+10.10.50.10   ping=True  tcp443=False
+192.168.1.1   ping=False tcp443=False
+1.1.1.1       ping=False tcp443=False

@@ -1,0 +1,30 @@
+Active Directory is ready: corp.smallbiz.test (domain mode Windows2025Domain)
+[2026-11-13 01:31:33] GPO SB-U-DepartmentDriveMaps
+[2026-11-13 01:31:33] Computer setting: Always wait for the network at computer startup and logon
+[2026-11-13 01:31:33] User preference: Drive Maps with item-level targeting by security group
+[2026-11-13 01:31:33] Registering the Drive Maps client-side extension and bumping the user version
+[2026-11-13 01:31:33] Linking the GPO to OU=SmallBiz,DC=corp,DC=smallbiz,DC=test
+[2026-11-13 01:31:33] Result
+
+
+DisplayName    : SB-U-DepartmentDriveMaps
+Id             : f0e6f283-7900-4877-8265-332f324d08e8
+GpoStatus      : AllSettingsEnabled
+User DS/Sysvol : 1/1
+Comp DS/Sysvol : 1/1
+LinkedTo       : OU=SmallBiz,DC=corp,DC=smallbiz,DC=test
+
+
+
+
+
+DisplayName              Enabled Enforced Order
+-----------              ------- -------- -----
+SB-U-DepartmentDriveMaps    True    False     1
+
+
+
+Drives.xml:
+  F:  \\DC01.corp.smallbiz.test\Finance        target group: SMALLBIZ\GG_Finance
+  O:  \\DC01.corp.smallbiz.test\Operations     target group: SMALLBIZ\GG_Operations
+HTML report: C:\LabEvidence\gpo-SB-U-DepartmentDriveMaps.html

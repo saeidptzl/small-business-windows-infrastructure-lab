@@ -1,0 +1,30 @@
+== cl01
+
+Name: Windows(R), EnterpriseSEval edition
+Description: Windows(R) Operating System, TIMEBASED_EVAL channel
+Partial Product Key: KQFGJ
+License Status: Notification
+Notification Reason: 0xC004F009 (grace time expired).
+
+
+Windows(R), EnterpriseSEval edition:
+    Windows is in Notification mode
+
+Caption     : Microsoft Windows 11 Enterprise LTSC Evaluation
+Version     : 10.0.26100
+BuildNumber : 26100
+== dc01
+
+Name: Windows(R), ServerStandardEval edition
+Description: Windows(R) Operating System, TIMEBASED_EVAL channel
+Partial Product Key: 7H9YG
+License Status: Initial grace period
+Time remaining: 14386 minute(s) (10 day(s))
+
+
+Windows(R), ServerStandardEval edition:
+    Initial grace period ends 11/23/2026 1:18:42 AM
+
+Caption     : Microsoft Windows Server 2025 Standard Evaluation
+Version     : 10.0.26100
+BuildNumber : 26100

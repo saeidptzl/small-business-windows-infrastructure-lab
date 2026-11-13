@@ -1,0 +1,19 @@
+Active Directory is ready: corp.smallbiz.test (domain mode Windows2025Domain)
+[2026-11-13 01:47:34] Ticket LAB-1001 - onboarding Elena Marini (elena.marini) into Finance
+[2026-11-13 01:47:34] Verification (directory side)
+
+
+SamAccountName     : elena.marini
+UserPrincipalName  : elena.marini@corp.smallbiz.test
+OU                 : OU=Finance,OU=Users,OU=SmallBiz,DC=corp,DC=smallbiz,DC=test
+Department         : Finance
+Enabled            : True
+MustChangePassword : True
+DirectGroups       : GG_Finance
+
+
+
+
+Access chain: elena.marini -> GG_Finance -> DL_FS_Finance_Modify -> \\DC01.corp.smallbiz.test\Finance  (OK)
+Not a member of GG_Operations: confirmed
+Next: sign in on CL01 as SMALLBIZ\elena.marini and run scripts\client\10-Test-DepartmentAccess.ps1

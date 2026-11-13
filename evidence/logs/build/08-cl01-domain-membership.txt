@@ -1,0 +1,13 @@
+[2026-11-13 01:47:15] Refreshing computer policy
+Computer object: CN=CL01,OU=Workstations,OU=SmallBiz,DC=corp,DC=smallbiz,DC=test
+[2026-11-13 01:47:22] Result
+
+Id    Check                                 Expected                  Observed                               Result
+--    -----                                 --------                  --------                               ------
+DJ-01 Computer is domain member             corp.smallbiz.test        corp.smallbiz.test (PartOfDomain=True) PASS
+DJ-02 Secure channel to the domain          True                      True                                   PASS
+DJ-03 DC locator finds a DC                 \\DC01.corp.smallbiz.test \\DC01.corp.smallbiz.test              PASS
+DJ-04 Drive-map GPO applies to the computer SB-U-DepartmentDriveMaps  listed under Applied GPOs              PASS
+
+
+

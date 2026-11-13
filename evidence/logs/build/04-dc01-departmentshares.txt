@@ -1,0 +1,36 @@
+[2026-11-13 01:31:26] Share root D:\Shares (administrators only)
+[2026-11-13 01:31:26] Folder + NTFS: D:\Shares\Finance
+[2026-11-13 01:31:27] SMB share: \\DC01.corp.smallbiz.test\Finance
+[2026-11-13 01:31:28] Folder + NTFS: D:\Shares\Operations
+[2026-11-13 01:31:28] SMB share: \\DC01.corp.smallbiz.test\Operations
+[2026-11-13 01:31:28] Synthetic sample files
+[2026-11-13 01:31:28] Result: share permissions
+
+Name       Path                 FolderEnumerationMode CachingMode
+----       ----                 --------------------- -----------
+Finance    D:\Shares\Finance              AccessBased        None
+Operations D:\Shares\Operations           AccessBased        None
+
+
+
+
+Name       AccountName                      AccessControlType AccessRight
+----       -----------                      ----------------- -----------
+Finance    BUILTIN\Administrators                       Allow        Full
+Finance    SMALLBIZ\DL_FS_Finance_Modify                Allow      Change
+Operations BUILTIN\Administrators                       Allow        Full
+Operations SMALLBIZ\DL_FS_Operations_Modify             Allow      Change
+
+
+
+[2026-11-13 01:31:28] Result: NTFS permissions
+D:\Shares\Finance SMALLBIZ\DL_FS_Finance_Modify:(OI)(CI)(M)
+                  BUILTIN\Administrators:(OI)(CI)(F)
+                  NT AUTHORITY\SYSTEM:(OI)(CI)(F)
+
+Successfully processed 1 files; Failed processing 0 files
+D:\Shares\Operations SMALLBIZ\DL_FS_Operations_Modify:(OI)(CI)(M)
+                     BUILTIN\Administrators:(OI)(CI)(F)
+                     NT AUTHORITY\SYSTEM:(OI)(CI)(F)
+
+Successfully processed 1 files; Failed processing 0 files

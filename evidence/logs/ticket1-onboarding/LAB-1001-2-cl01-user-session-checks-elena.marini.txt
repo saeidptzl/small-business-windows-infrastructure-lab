@@ -1,0 +1,16 @@
+[2026-11-13 01:52:23] User: smallbiz\elena.marini   Computer: CL01
+Domain groups in token: SMALLBIZ\GG_Finance, SMALLBIZ\DL_FS_Finance_Modify
+Mapped drives (Get-SmbMapping):
+  F:  \\DC01.corp.smallbiz.test\Finance  OK
+
+
+Id    Check                          Expected                                Observed                                             Result
+--    -----                          --------                                --------                                             ------
+AC-F1 F: drive mapped by GPO         F: -> \\DC01.corp.smallbiz.test\Finance F: -> \\DC01.corp.smallbiz.test\Finance              PASS
+AC-F2 List own share via UNC         OK                                      \\DC01.corp.smallbiz.test\Finance : OK               PASS
+AC-F3 Write to own share via UNC     OK                                      OK (created and deleted a test file)                 PASS
+AC-O1 O: drive NOT mapped            not mapped                              not mapped                                           PASS
+AC-O2 Other department share via UNC ACCESS DENIED                           \\DC01.corp.smallbiz.test\Operations : ACCESS DENIED PASS
+
+Summary: 5 checks, 5 passed, 0 failed
+[task LabUserSession-7bccc464 finished, result 0x0]

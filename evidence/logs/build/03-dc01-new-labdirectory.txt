@@ -1,0 +1,34 @@
+Active Directory is ready: corp.smallbiz.test (domain mode Windows2025Domain)
+[2026-11-13 01:31:21] Organizational units
+  created OU OU=SmallBiz,DC=corp,DC=smallbiz,DC=test
+  created OU OU=Users,OU=SmallBiz,DC=corp,DC=smallbiz,DC=test
+  created OU OU=Groups,OU=SmallBiz,DC=corp,DC=smallbiz,DC=test
+  created OU OU=Workstations,OU=SmallBiz,DC=corp,DC=smallbiz,DC=test
+  created OU OU=Finance,OU=Users,OU=SmallBiz,DC=corp,DC=smallbiz,DC=test
+  created OU OU=Operations,OU=Users,OU=SmallBiz,DC=corp,DC=smallbiz,DC=test
+[2026-11-13 01:31:21] New computer accounts default to OU=Workstations
+Redirection was successful.
+
+
+[2026-11-13 01:31:21] Security groups (AGDLP)
+[2026-11-13 01:31:21] Synthetic staff accounts
+  created giulia.bianchi in OU=Finance,OU=Users,OU=SmallBiz,DC=corp,DC=smallbiz,DC=test
+  created luca.ferri in OU=Finance,OU=Users,OU=SmallBiz,DC=corp,DC=smallbiz,DC=test
+  created marco.verdi in OU=Operations,OU=Users,OU=SmallBiz,DC=corp,DC=smallbiz,DC=test
+  created sara.conti in OU=Operations,OU=Users,OU=SmallBiz,DC=corp,DC=smallbiz,DC=test
+[2026-11-13 01:31:22] Result: groups and members
+  GG_Finance                 Global       members: giulia.bianchi, luca.ferri
+  DL_FS_Finance_Modify       DomainLocal  members: GG_Finance
+  GG_Operations              Global       members: marco.verdi, sara.conti
+  DL_FS_Operations_Modify    DomainLocal  members: GG_Operations
+[2026-11-13 01:31:22] Result: users
+
+SamAccountName Department Title                 Enabled OU
+-------------- ---------- -----                 ------- --
+giulia.bianchi Finance    Accountant               True OU=Finance,OU=Users,OU=SmallBiz,DC=corp,DC=smallbiz,DC=test
+luca.ferri     Finance    Finance Manager          True OU=Finance,OU=Users,OU=SmallBiz,DC=corp,DC=smallbiz,DC=test
+marco.verdi    Operations Warehouse Coordinator    True OU=Operations,OU=Users,OU=SmallBiz,DC=corp,DC=smallbiz,DC=test
+sara.conti     Operations Operations Manager       True OU=Operations,OU=Users,OU=SmallBiz,DC=corp,DC=smallbiz,DC=test
+
+
+

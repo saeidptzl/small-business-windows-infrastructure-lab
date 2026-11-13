@@ -1,0 +1,2 @@
+[2026-11-13 01:54:49] DNS servers before: 10.10.50.10
+[2026-11-13 01:54:49] DNS servers after : 8.8.8.8   (fault injected, DNS cache cleared)

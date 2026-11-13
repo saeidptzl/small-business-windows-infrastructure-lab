@@ -1,0 +1,6 @@
+[2026-11-13 01:27:06] Prerequisite check for forest corp.smallbiz.test
+Prerequisite check: Success - Operation completed successfully
+[2026-11-13 01:27:47] Installing the forest (AD DS + DNS)
+Install-ADDSForest: Success - You must restart this computer to complete the operation.
+
+[2026-11-13 01:29:40] Restarting in 15 seconds to complete the promotion

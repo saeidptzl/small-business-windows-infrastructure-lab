@@ -1,0 +1,34 @@
+[2026-11-13 01:31:46] 1. Original file: D:\Shares\Finance\Budget-2026-Q1-SAMPLE.csv
+   size 223 bytes, modified 11/13/2026 1:31:28 AM, SHA-256 92B9803F99A8B93D71B52DC2647EB8C599450E100FBFF1DBCFD0DF5BA03D9611
+[2026-11-13 01:31:46] 2. One-time backup of the file to E:
+   Summary of the backup operation:
+   ------------------
+   The backup operation successfully completed.
+   The backup of volume Data(D:) completed successfully.
+   Log of files successfully backed up:
+   C:\WINDOWS\Logs\WindowsServerBackup\Backup-13-11-2026_00-31-50.log
+   newest backup version: 11/13/2026-00:31 (identifier is in UTC)
+[2026-11-13 01:32:00] 3. Incident simulation: the file is accidentally overwritten
+   damaged file SHA-256 8A02E58E22FADD5F707B0BCCF1B419ED2082F11DD11A672319803669EA5600FC
+[2026-11-13 01:32:01] 4. Restore to an alternate location: D:\RecoveryTest\20261113-013146
+   Total files recovered: 1
+   Total files failed: 0
+   Log of files successfully recovered:
+   C:\WINDOWS\Logs\WindowsServerBackup\FileRestore-13-11-2026_00-32-01.log
+   recovered file: D:\RecoveryTest\20261113-013146\Budget-2026-Q1-SAMPLE.csv
+[2026-11-13 01:32:11] 5. Integrity check
+   original  SHA-256 92B9803F99A8B93D71B52DC2647EB8C599450E100FBFF1DBCFD0DF5BA03D9611
+   recovered SHA-256 92B9803F99A8B93D71B52DC2647EB8C599450E100FBFF1DBCFD0DF5BA03D9611
+[2026-11-13 01:32:11] 6. Hashes match: putting the recovered file back in place
+[2026-11-13 01:32:11] Result
+
+Id    Check                          Expected                                   Observed                                                  Result
+--    -----                          --------                                   --------                                                  ------
+BR-01 Backup job completed           wbadmin exit 0, version listed             version 11/13/2026-00:31                                  PASS
+BR-02 Damage simulated               hash differs from original                 8A02E58E22FADD5F                                          PASS
+BR-03 Restore to alternate location  file under D:\RecoveryTest\20261113-013146 D:\RecoveryTest\20261113-013146\Budget-2026-Q1-SAMPLE.csv PASS
+BR-04 Recovered hash = original hash 92B9803F99A8B93D                           92B9803F99A8B93D                                          PASS
+BR-05 File back in the share         92B9803F99A8B93D                           92B9803F99A8B93D                                          PASS
+
+
+

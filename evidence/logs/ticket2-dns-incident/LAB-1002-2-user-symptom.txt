@@ -1,0 +1,18 @@
+[2026-11-13 01:58:50] User: smallbiz\elena.marini   Computer: CL01
+Domain groups in token: (no names resolved)
+Domain group SIDs whose names could not be resolved: 2 (is a DC reachable by name?)
+Department taken from the ticket: Finance
+Mapped drives (Get-SmbMapping):
+  (none)
+
+
+Id    Check                          Expected                                Observed                                                                                                                         Result
+--    -----                          --------                                --------                                                                                                                         ------
+AC-F1 F: drive mapped by GPO         F: -> \\DC01.corp.smallbiz.test\Finance not mapped                                                                                                                       FAIL
+AC-F2 List own share via UNC         OK                                      \\DC01.corp.smallbiz.test\Finance : ERROR: Cannot find path '\\DC01.corp.smallbiz.test\Finance' because it does not exist.       FAIL
+AC-F3 Write to own share via UNC     OK                                      FAILED: The network path was not found.                                                                                          FAIL
+AC-O1 O: drive NOT mapped            not mapped                              not mapped                                                                                                                       PASS
+AC-O2 Other department share via UNC ACCESS DENIED                           \\DC01.corp.smallbiz.test\Operations : ERROR: Cannot find path '\\DC01.corp.smallbiz.test\Operations' because it does not exist. FAIL
+
+Summary: 5 checks, 1 passed, 4 failed
+[task LabUserSession-ce9aed7e finished, result 0x0]
