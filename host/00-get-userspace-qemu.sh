@@ -14,6 +14,7 @@ HERE="$(cd "$(dirname "$0")" && pwd)"
 source "$HERE/lab.env"
 
 PKGS=(qemu-system-x86 qemu-system-common qemu-system-data qemu-utils seabios ipxe-qemu
+      qemu-system-gui qemu-system-modules-opengl
       ovmf-generic swtpm swtpm-libs libtpms0 xorriso libisoburn1t64 libburn4t64 libisofs6t64
       libpmem1 libndctl6 libdaxctl1 libfdt1 librdmacm1t64 libibverbs1 libslirp0 libaio1t64)
 
