@@ -155,7 +155,10 @@ launch() {
 stop_vm() {
   local vm="$1"; check_vm "$vm"
   is_running "$vm" || { echo "$vm is not running"; return 0; }
-  labctl powerdown "$vm" >/dev/null || true
+  # Clean OS shutdown through the guest agent; the ACPI power button is the fallback
+  # (observed: Windows 11 with a signed-in user ignored the power button).
+  timeout 30 "$LAB_PYTHON" "$HERE/labctl.py" exec "$vm" --timeout 20 -- shutdown.exe /s /t 0 /f >/dev/null 2>&1 \
+    || labctl powerdown "$vm" >/dev/null 2>&1 || true
   for _ in $(seq 180); do is_running "$vm" || { echo "$vm stopped"; return 0; }; sleep 1; done
   die "$vm did not shut down within 3 minutes (use: host/vm.sh kill $vm)"
 }

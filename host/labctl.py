@@ -473,8 +473,16 @@ def main():
     s.add_argument("remote"); s.add_argument("local"); s.set_defaults(fn=cmd_pull)
 
     a = p.parse_args()
-    if getattr(a, "argv", None) and a.argv[0] == "--":
-        a.argv = a.argv[1:]
+    if getattr(a, "argv", None) is not None:
+        # argparse.REMAINDER also captures options written after the VM name
+        # ("exec cl01 --timeout 20 -- prog"): consume them here.
+        while len(a.argv) >= 2 and a.argv[0] == "--timeout":
+            a.timeout = int(a.argv[1])
+            a.argv = a.argv[2:]
+        if a.argv and a.argv[0] == "--":
+            a.argv = a.argv[1:]
+        if not a.argv:
+            p.error("exec: no program given")
     if getattr(a, "args", None) and isinstance(a.args, list) and a.args and a.args[0] == "--":
         a.args = a.args[1:]
     a.fn(a)
