@@ -9,8 +9,12 @@
 
 ## 0. Lab only: create the fault
 
+Windows 11 blocks scripts by default (execution policy *Restricted*), so start each PowerShell
+window on CL01 with `Set-ExecutionPolicy -Scope Process Bypass -Force` (this window only).
+
 ```powershell
 # CL01, elevated. Refuses to run on any machine other than CL01 in corp.smallbiz.test.
+Set-ExecutionPolicy -Scope Process Bypass -Force
 C:\LabSetup\client\20-Set-DnsFault.ps1          # DNS of the LAB adapter -> 8.8.8.8
 Restart-Computer                                # "the user arrives the next morning"
 ```
@@ -38,6 +42,7 @@ ping DC01.corp.smallbiz.test               -> "could not find host"
 ## 2. Diagnose from the client, bottom-up
 
 ```powershell
+Set-ExecutionPolicy -Scope Process Bypass -Force
 C:\LabSetup\client\21-Get-DnsDiagnostics.ps1      # read-only, any user
 ```
 
@@ -64,6 +69,7 @@ The script's conclusion on the reference run:
 ## 3. Fix
 
 ```powershell
+Set-ExecutionPolicy -Scope Process Bypass -Force
 C:\LabSetup\client\22-Repair-ClientDns.ps1      # CL01, elevated
 ```
 

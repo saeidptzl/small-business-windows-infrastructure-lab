@@ -50,9 +50,10 @@ powershell -ExecutionPolicy Bypass -File C:\LabSetup\client\10-Test-DepartmentAc
 
 ## ۳) تیکت ۲: «درایو اشتراکی‌ام غیب شده» (DNS)
 
-**روی CL01** (PowerShell با دسترسی ادمین):
+**روی CL01** (PowerShell با دسترسی ادمین). ویندوز ۱۱ به‌طور پیش‌فرض اجرای اسکریپت را می‌بندد، پس خط اول را در هر پنجره‌ی PowerShell بزنید (فقط روی همان پنجره اثر دارد):
 
 ```powershell
+Set-ExecutionPolicy -Scope Process Bypass -Force
 C:\LabSetup\client\20-Set-DnsFault.ps1      # خراب کردن عمدی: DNS = 8.8.8.8
 Restart-Computer
 ```
@@ -62,6 +63,7 @@ Restart-Computer
 **عیب‌یابی** (روی CL01، هر کاربری):
 
 ```powershell
+Set-ExecutionPolicy -Scope Process Bypass -Force
 C:\LabSetup\client\21-Get-DnsDiagnostics.ps1
 ```
 
@@ -70,6 +72,7 @@ C:\LabSetup\client\21-Get-DnsDiagnostics.ps1
 **رفع مشکل** (روی CL01، ادمین):
 
 ```powershell
+Set-ExecutionPolicy -Scope Process Bypass -Force
 C:\LabSetup\client\22-Repair-ClientDns.ps1
 ```
 
